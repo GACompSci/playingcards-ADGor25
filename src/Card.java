@@ -19,19 +19,40 @@ public class Card {
         this.name = generateName(this.value, this.suit); // Calls the method that generates the card's name
     }
 
-    // Method to generate a card's name based on value and suit
+    // Method to generate a card's name based on its value and suit
     private String generateName(int value, int suit) {
-
-        // Checks for Joker
-        if (value == 0 || suit == 0) { 
+        if (value == 0 || suit == 0) {
             return "Joker";
         }
 
-        // Key to locate correct value and suit
-        String[] values = {"", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
-        String[] suits = {"", "Hearts", "Diamonds", "Clubs", "Spades"};
+        String valueName = "";
+        String suitName = "";
 
-        return values[value] + " of " + suits[suit];
+        // Determine card value name
+        if (value == 1) {
+            valueName = "Ace";
+        } else if (value >= 2 && value <= 10) {
+            valueName = String.valueOf(value);
+        } else if (value == 11) {
+            valueName = "Jack";
+        } else if (value == 12) {
+            valueName = "Queen";
+        } else if (value == 13) {
+            valueName = "King";
+        }
+
+        // Determine card suit name
+        if (suit == 1) {
+            suitName = "Diamonds";
+        } else if (suit == 2) {
+            suitName = "Clubs";
+        } else if (suit == 3) {
+            suitName = "Spades";
+        } else if (suit == 4) {
+            suitName = "Hearts";
+        }
+
+        return valueName + " of " + suitName;
     }
 
     // Gets Card Value
